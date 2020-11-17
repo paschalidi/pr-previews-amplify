@@ -23,5 +23,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_PREVIEW_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_PREVIEW_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          AmplifyAppId: dbulrk8k44el
-          AWS_REGION: 'us-east-1'
+          AmplifyAppId: ${{ secrets.AMPLIFYAPPID }}
+          AWS_REGION: 'eu-west-2'

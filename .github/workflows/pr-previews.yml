@@ -20,7 +20,7 @@ jobs:
         with:
           args: --delete
         env:
-          AWS_S3_BUCKET: pr-preview-github.dev
+          AWS_S3_BUCKET: pr-preview-github-paschalidi.com
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_PREVIEW_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_PREVIEW_SECRET }}
           AWS_REGION: 'us-east-1'
@@ -35,5 +35,5 @@ jobs:
         with:
           msg: |
             Deploy preview ready!
-            http://pr-preview-github.dev/preview/${{ github.event.number }}
+            http://pr-preview-github-paschalidi.com/preview/${{ github.event.number }}
             built from ${{ github.sha }}

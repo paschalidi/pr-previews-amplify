@@ -35,5 +35,5 @@ jobs:
         with:
           msg: |
             Deploy preview ready!
-            https://pr-preview-github.dev/preview/${{ github.event.number }}
+            http://pr-preview-github.dev/preview/${{ github.event.number }}
             built from ${{ github.sha }}

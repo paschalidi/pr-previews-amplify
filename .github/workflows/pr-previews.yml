@@ -1,0 +1,39 @@
+name: Deploy Preview
+
+on: pull_request
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy
+        if: success()
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete
+        env:
+          AWS_S3_BUCKET: pr-preview-github.dev
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_PREVIEW_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_PREVIEW_SECRET }}
+          AWS_REGION: 'us-east-1'
+          SOURCE_DIR: 'public'
+          DEST_DIR: preview/${{ github.event.number }}
+
+      - name: Deploy message
+        if: success()
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: |
+            Deploy preview ready!
+            https://pr-preview-github.dev/preview/${{ github.event.number }}
+            built from ${{ github.sha }}

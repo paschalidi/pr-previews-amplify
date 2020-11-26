@@ -12,7 +12,7 @@ jobs:
         run: yarn
 
       - name: Build
-        run: yarn build
+        run: PUBLIC_URL=/preview/${{ github.event.number }} yarn build
 
       - name: Deploy
         if: success()

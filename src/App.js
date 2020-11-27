@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn to preview
+          Learn to preview again
         </a>
       </header>
     </div>
